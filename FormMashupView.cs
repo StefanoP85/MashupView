@@ -46,12 +46,15 @@ namespace MashupView
                     try
                     {
                         if (QueryParser.ReadFile(FileSpec))
-                            ActionUpdate();
+                            TextBoxFileName.Text = FileSpec;
+                        else
+                            TextBoxFileName.Text = "";
                     }
                     catch (IOException E)
                     {
                         MessageBox.Show("An error has occured reading the selected file.\r\n\r\n" + E.Message);
                     }
+                    ActionUpdate();
                 }
             }
         }
