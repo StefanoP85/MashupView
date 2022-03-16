@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://schemas.microsoft.com/DataMashup"
+           elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://schemas.microsoft.com/DataMashup">
+  <xs:simpleType name="version">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]+\.[0-9]+(\.[0-9]+(\.[0-9]+)?)?" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="culture">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="en-us" />
+      <!-- Other culture names as specified by RFC1766 -->
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Package">
+    <xs:complexType>
+      <xs:all>
+        <xs:element name="Version" type="version"></xs:element>
+        <xs:element name="MinVersion" type="version"></xs:element>
+        <xs:element name="Culture" type="culture"></xs:element>
+      </xs:all>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
