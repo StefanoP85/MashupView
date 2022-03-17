@@ -54,10 +54,10 @@ namespace MashupView
                 using (StreamReader SourceStream = new StreamReader(Source))
                 {
                     FQueryMashup = SourceStream.ReadToEnd();
-                    string[] QueryDefinitions = Regex.Split(FQueryMashup, "\r\n\r\n", RegexOptions.IgnoreCase);
+                    string[] QueryDefinitions = Regex.Split(FQueryMashup, ";(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))");
                     for (int I = 0; I < QueryDefinitions.Length; I++)
                     {
-                        string[] QueryParts = Regex.Split(QueryDefinitions[I], @"(.*)shared(.+?) = (.*)", RegexOptions.IgnoreCase | RegexOptions.Singleline);
+                        string[] QueryParts = Regex.Split(QueryDefinitions[I], "(.*)shared(.+?) = (.*)", RegexOptions.IgnoreCase | RegexOptions.Singleline);
                         if (QueryParts.Length > 1)
                             FQueryList.Add(QueryParts[2].Trim(), QueryParts[3].Replace("\n", Environment.NewLine).Trim());
                     }
