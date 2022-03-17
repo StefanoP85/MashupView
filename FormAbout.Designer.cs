@@ -109,8 +109,7 @@
             // 
             // TFormAbout
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(302, 193);
             this.Controls.Add(this.LabelAbout7);
             this.Controls.Add(this.LabelAbout6);
@@ -119,6 +118,8 @@
             this.Controls.Add(this.LabelAbout3);
             this.Controls.Add(this.LabelAbout2);
             this.Controls.Add(this.LabelAbout1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximumSize = new System.Drawing.Size(320, 240);
             this.MinimumSize = new System.Drawing.Size(320, 240);
             this.Name = "TFormAbout";

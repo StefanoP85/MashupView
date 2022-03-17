@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
@@ -7,11 +8,13 @@ namespace MashupView
     public partial class TFormMashupView : Form
     {
         private TFormAbout FormAbout = null;
+        private TFormSettings FormSettings = null;
         private TQueryParser QueryParser = null;
         public TFormMashupView() : base()
         {
             InitializeComponent();
             FormAbout = new TFormAbout();
+            FormSettings = new TFormSettings();
             QueryParser = new TQueryParser();
         }
         void ActionUpdate()
@@ -70,6 +73,10 @@ namespace MashupView
                 TextBoxCode.Text = QueryParser.QueryList[QueryName];
             }
         }
+        private void TFormMashupView_Load(object Sender, EventArgs E)
+        {
+            FormSettings.InitSettings(TextBoxCode.Font, TextBoxCode.ForeColor, TextBoxCode.BackColor, ListBoxQueries.Font, ListBoxQueries.ForeColor, ListBoxQueries.BackColor);
+        }
         private void ToolStripMenuItemFileOpen_Click(object Sender, EventArgs E)
         {
             ActionOpen();
@@ -110,6 +117,23 @@ namespace MashupView
         private void ToolStripMenuItemHelpAbout_Click(object Sender, EventArgs E)
         {
             FormAbout.Show();
+        }
+        private void ToolStripMenuItemViewSettings_Click(object Sender, EventArgs E)
+        {
+            Font AppFont;
+            Color AppColor;
+            Color AppBackgroundColor;
+            Font CodeFont;
+            Color CodeColor;
+            Color CodeBackgroundColor;
+            FormSettings.ShowDialog();
+            FormSettings.GetSettings(out CodeFont, out CodeColor, out CodeBackgroundColor, out AppFont, out AppColor, out AppBackgroundColor);
+            TextBoxCode.Font = CodeFont;
+            TextBoxCode.ForeColor = CodeColor;
+            TextBoxCode.BackColor = CodeBackgroundColor;
+            ListBoxQueries.Font = AppFont;
+            ListBoxQueries.ForeColor = AppColor;
+            ListBoxQueries.BackColor = AppBackgroundColor;
         }
     }
 }

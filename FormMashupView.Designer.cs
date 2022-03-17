@@ -40,6 +40,8 @@
             this.ToolStripMenuItemFileExportThisQuery = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemFileExportAllQueries = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemFileExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemView = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemViewSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.TableLayoutPanelMain.SuspendLayout();
@@ -70,7 +72,7 @@
             this.ButtonOpen.Location = new System.Drawing.Point(3, 3);
             this.ButtonOpen.Name = "ButtonOpen";
             this.ButtonOpen.Size = new System.Drawing.Size(250, 26);
-            this.ButtonOpen.TabIndex = 6;
+            this.ButtonOpen.TabIndex = 1;
             this.ButtonOpen.Text = "Open...";
             this.ButtonOpen.UseVisualStyleBackColor = true;
             this.ButtonOpen.Click += new System.EventHandler(this.ButtonOpen_Click);
@@ -88,7 +90,8 @@
             this.TextBoxCode.ReadOnly = true;
             this.TextBoxCode.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.TextBoxCode.Size = new System.Drawing.Size(520, 487);
-            this.TextBoxCode.TabIndex = 5;
+            this.TextBoxCode.TabIndex = 4;
+            this.TextBoxCode.WordWrap = false;
             // 
             // TextBoxFileName
             // 
@@ -96,17 +99,19 @@
             this.TextBoxFileName.Location = new System.Drawing.Point(259, 3);
             this.TextBoxFileName.Name = "TextBoxFileName";
             this.TextBoxFileName.Size = new System.Drawing.Size(520, 22);
-            this.TextBoxFileName.TabIndex = 4;
+            this.TextBoxFileName.TabIndex = 2;
             // 
             // ListBoxQueries
             // 
             this.ListBoxQueries.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ListBoxQueries.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.ListBoxQueries.FormattingEnabled = true;
-            this.ListBoxQueries.ItemHeight = 16;
+            this.ListBoxQueries.HorizontalScrollbar = true;
+            this.ListBoxQueries.ItemHeight = 20;
             this.ListBoxQueries.Location = new System.Drawing.Point(3, 35);
             this.ListBoxQueries.Name = "ListBoxQueries";
             this.ListBoxQueries.Size = new System.Drawing.Size(250, 487);
-            this.ListBoxQueries.TabIndex = 7;
+            this.ListBoxQueries.TabIndex = 3;
             this.ListBoxQueries.SelectedIndexChanged += new System.EventHandler(this.ListBoxQueries_SelectedIndexChanged);
             // 
             // MenuStrip
@@ -114,6 +119,7 @@
             this.MenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuItemFile,
+            this.ToolStripMenuItemView,
             this.ToolStripMenuItemHelp});
             this.MenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MenuStrip.Name = "MenuStrip";
@@ -171,6 +177,21 @@
             this.ToolStripMenuItemFileExit.Text = "Exit";
             this.ToolStripMenuItemFileExit.Click += new System.EventHandler(this.ToolStripMenuItemFileExit_Click);
             // 
+            // ToolStripMenuItemView
+            // 
+            this.ToolStripMenuItemView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemViewSettings});
+            this.ToolStripMenuItemView.Name = "ToolStripMenuItemView";
+            this.ToolStripMenuItemView.Size = new System.Drawing.Size(55, 24);
+            this.ToolStripMenuItemView.Text = "View";
+            // 
+            // ToolStripMenuItemViewSettings
+            // 
+            this.ToolStripMenuItemViewSettings.Name = "ToolStripMenuItemViewSettings";
+            this.ToolStripMenuItemViewSettings.Size = new System.Drawing.Size(154, 26);
+            this.ToolStripMenuItemViewSettings.Text = "Settings...";
+            this.ToolStripMenuItemViewSettings.Click += new System.EventHandler(this.ToolStripMenuItemViewSettings_Click);
+            // 
             // ToolStripMenuItemHelp
             // 
             this.ToolStripMenuItemHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -197,6 +218,7 @@
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "TFormMashupView";
             this.Text = "Mashup View";
+            this.Load += new System.EventHandler(this.TFormMashupView_Load);
             this.TableLayoutPanelMain.ResumeLayout(false);
             this.TableLayoutPanelMain.PerformLayout();
             this.MenuStrip.ResumeLayout(false);
@@ -222,6 +244,8 @@
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemFileExit;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemHelp;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemHelpAbout;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemView;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemViewSettings;
     }
 }
 
