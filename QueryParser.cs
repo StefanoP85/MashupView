@@ -19,7 +19,6 @@ namespace MashupView
         public string Culture { get => FCulture; }
         public string QueryMashup { get => FQueryMashup;  }
         public Dictionary<String, String> QueryList { get => FQueryList; }
-
         public TQueryParser(): base()
         {
             FQueryList = new Dictionary<String, String>();
@@ -34,9 +33,7 @@ namespace MashupView
         }
         public void ReadPackage(in Stream Source)
         {
-            if (Source == null)
-                throw new NullReferenceException("TQueryParser::ReadPackage: null reference of the source stream.");
-            else
+            if (Source != null)
             {
                 XmlDocument SourceDOM = new XmlDocument();
                 SourceDOM.Load(Source);
@@ -48,7 +45,7 @@ namespace MashupView
         public void ReadQuery(in Stream Source)
         {
             if (Source == null)
-                throw new NullReferenceException("TQueryParser::ReadPackage: null reference of the source stream.");
+                throw new ArgumentNullException("TQueryParser::ReadPackage: null reference of the source stream.");
             else
             {
                 using (StreamReader SourceStream = new StreamReader(Source))
