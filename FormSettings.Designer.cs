@@ -32,18 +32,18 @@
             this.ColorDialogApp = new System.Windows.Forms.ColorDialog();
             this.FontDialogCode = new System.Windows.Forms.FontDialog();
             this.GroupBoxCode = new System.Windows.Forms.GroupBox();
+            this.ButtonCodeColor = new System.Windows.Forms.Button();
+            this.ButtonCodeFont = new System.Windows.Forms.Button();
+            this.LabelCodeFont = new System.Windows.Forms.Label();
+            this.TextBoxCodeFont = new System.Windows.Forms.TextBox();
             this.TextBoxCode = new System.Windows.Forms.TextBox();
             this.GroupBoxApp = new System.Windows.Forms.GroupBox();
-            this.TextBoxCodeFont = new System.Windows.Forms.TextBox();
-            this.LabelCodeFont = new System.Windows.Forms.Label();
-            this.ButtonCodeFont = new System.Windows.Forms.Button();
-            this.ButtonCodeColor = new System.Windows.Forms.Button();
-            this.FontDialogApp = new System.Windows.Forms.FontDialog();
             this.ButtonFontColor = new System.Windows.Forms.Button();
             this.ButtonAppFont = new System.Windows.Forms.Button();
             this.LabelAppFont = new System.Windows.Forms.Label();
             this.TextBoxAppFont = new System.Windows.Forms.TextBox();
             this.TextBoxApp = new System.Windows.Forms.TextBox();
+            this.FontDialogApp = new System.Windows.Forms.FontDialog();
             this.GroupBoxCode.SuspendLayout();
             this.GroupBoxApp.SuspendLayout();
             this.SuspendLayout();
@@ -77,6 +77,43 @@
             this.GroupBoxCode.TabStop = false;
             this.GroupBoxCode.Text = "Code settings";
             // 
+            // ButtonCodeColor
+            // 
+            this.ButtonCodeColor.Location = new System.Drawing.Point(6, 130);
+            this.ButtonCodeColor.Name = "ButtonCodeColor";
+            this.ButtonCodeColor.Size = new System.Drawing.Size(275, 53);
+            this.ButtonCodeColor.TabIndex = 3;
+            this.ButtonCodeColor.Text = "Select background color...";
+            this.ButtonCodeColor.UseVisualStyleBackColor = true;
+            this.ButtonCodeColor.Click += new System.EventHandler(this.ButtonCodeColor_Click);
+            // 
+            // ButtonCodeFont
+            // 
+            this.ButtonCodeFont.Location = new System.Drawing.Point(6, 21);
+            this.ButtonCodeFont.Name = "ButtonCodeFont";
+            this.ButtonCodeFont.Size = new System.Drawing.Size(275, 53);
+            this.ButtonCodeFont.TabIndex = 0;
+            this.ButtonCodeFont.Text = "Select font...";
+            this.ButtonCodeFont.UseVisualStyleBackColor = true;
+            this.ButtonCodeFont.Click += new System.EventHandler(this.ButtonCodeFont_Click);
+            // 
+            // LabelCodeFont
+            // 
+            this.LabelCodeFont.AutoSize = true;
+            this.LabelCodeFont.Location = new System.Drawing.Point(6, 77);
+            this.LabelCodeFont.Name = "LabelCodeFont";
+            this.LabelCodeFont.Size = new System.Drawing.Size(80, 17);
+            this.LabelCodeFont.TabIndex = 2;
+            this.LabelCodeFont.Text = "Font family:";
+            // 
+            // TextBoxCodeFont
+            // 
+            this.TextBoxCodeFont.Location = new System.Drawing.Point(6, 97);
+            this.TextBoxCodeFont.Name = "TextBoxCodeFont";
+            this.TextBoxCodeFont.ReadOnly = true;
+            this.TextBoxCodeFont.Size = new System.Drawing.Size(275, 22);
+            this.TextBoxCodeFont.TabIndex = 1;
+            // 
             // TextBoxCode
             // 
             this.TextBoxCode.Location = new System.Drawing.Point(287, 21);
@@ -101,48 +138,6 @@
             this.GroupBoxApp.TabIndex = 1;
             this.GroupBoxApp.TabStop = false;
             this.GroupBoxApp.Text = "Application settings";
-            // 
-            // TextBoxCodeFont
-            // 
-            this.TextBoxCodeFont.Location = new System.Drawing.Point(6, 97);
-            this.TextBoxCodeFont.Name = "TextBoxCodeFont";
-            this.TextBoxCodeFont.ReadOnly = true;
-            this.TextBoxCodeFont.Size = new System.Drawing.Size(275, 22);
-            this.TextBoxCodeFont.TabIndex = 1;
-            // 
-            // LabelCodeFont
-            // 
-            this.LabelCodeFont.AutoSize = true;
-            this.LabelCodeFont.Location = new System.Drawing.Point(6, 77);
-            this.LabelCodeFont.Name = "LabelCodeFont";
-            this.LabelCodeFont.Size = new System.Drawing.Size(80, 17);
-            this.LabelCodeFont.TabIndex = 2;
-            this.LabelCodeFont.Text = "Font family:";
-            // 
-            // ButtonCodeFont
-            // 
-            this.ButtonCodeFont.Location = new System.Drawing.Point(6, 21);
-            this.ButtonCodeFont.Name = "ButtonCodeFont";
-            this.ButtonCodeFont.Size = new System.Drawing.Size(275, 53);
-            this.ButtonCodeFont.TabIndex = 0;
-            this.ButtonCodeFont.Text = "Select font...";
-            this.ButtonCodeFont.UseVisualStyleBackColor = true;
-            this.ButtonCodeFont.Click += new System.EventHandler(this.ButtonCodeFont_Click);
-            // 
-            // ButtonCodeColor
-            // 
-            this.ButtonCodeColor.Location = new System.Drawing.Point(6, 130);
-            this.ButtonCodeColor.Name = "ButtonCodeColor";
-            this.ButtonCodeColor.Size = new System.Drawing.Size(275, 53);
-            this.ButtonCodeColor.TabIndex = 3;
-            this.ButtonCodeColor.Text = "Select background color...";
-            this.ButtonCodeColor.UseVisualStyleBackColor = true;
-            this.ButtonCodeColor.Click += new System.EventHandler(this.ButtonCodeColor_Click);
-            // 
-            // FontDialogApp
-            // 
-            this.FontDialogApp.ShowApply = true;
-            this.FontDialogApp.ShowColor = true;
             // 
             // ButtonFontColor
             // 
@@ -191,6 +186,11 @@
             this.TextBoxApp.TabIndex = 5;
             this.TextBoxApp.Text = "Query 1\r\nQuery 2\r\nQuery 3\r\n...\r\nQuery N";
             // 
+            // FontDialogApp
+            // 
+            this.FontDialogApp.ShowApply = true;
+            this.FontDialogApp.ShowColor = true;
+            // 
             // TFormSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -202,7 +202,7 @@
             this.MaximumSize = new System.Drawing.Size(640, 480);
             this.MinimumSize = new System.Drawing.Size(640, 480);
             this.Name = "TFormSettings";
-            this.Text = "FormSettings";
+            this.Text = "Mashup View settings";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TFormSettings_FormClosing);
             this.GroupBoxCode.ResumeLayout(false);
             this.GroupBoxCode.PerformLayout();

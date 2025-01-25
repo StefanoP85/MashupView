@@ -10,13 +10,6 @@ namespace MashupView
         private TFormAbout FormAbout = null;
         private TFormSettings FormSettings = null;
         private TQueryParser QueryParser = null;
-        public TFormMashupView() : base()
-        {
-            InitializeComponent();
-            FormAbout = new TFormAbout();
-            FormSettings = new TFormSettings();
-            QueryParser = new TQueryParser();
-        }
         void ActionUpdate()
         {
             ListBoxQueries.Items.Clear();
@@ -26,7 +19,7 @@ namespace MashupView
                 foreach (String QueryName in QueryParser.QueryList.Keys)
                     ListBoxQueries.Items.Add(QueryName);
                 ToolStripMenuItemFileExportAllQueries.Enabled = true;
-                ToolStripMenuItemFileExportThisQuery.Enabled = true; 
+                ToolStripMenuItemFileExportThisQuery.Enabled = true;
                 ToolStripMenuItemFileSaveAllQueries.Enabled = true;
             }
             else
@@ -35,6 +28,21 @@ namespace MashupView
                 ToolStripMenuItemFileExportThisQuery.Enabled = false;
                 ToolStripMenuItemFileSaveAllQueries.Enabled = false;
             }
+        }
+        void ActionReadFile(string FileSpec)
+        {
+            try
+            {
+                if (QueryParser.ReadFile(FileSpec))
+                    TextBoxFileName.Text = FileSpec;
+                else
+                    TextBoxFileName.Text = "";
+            }
+            catch (IOException E)
+            {
+                MessageBox.Show("An error has occured reading the selected file.\r\n\r\n" + E.Message);
+            }
+            ActionUpdate();
         }
         void ActionOpen()
         {
@@ -45,21 +53,31 @@ namespace MashupView
                 ExcelOpenFileDialog.RestoreDirectory = true;
                 if (ExcelOpenFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    string FileSpec = ExcelOpenFileDialog.FileName;
-                    try
-                    {
-                        if (QueryParser.ReadFile(FileSpec))
-                            TextBoxFileName.Text = FileSpec;
-                        else
-                            TextBoxFileName.Text = "";
-                    }
-                    catch (IOException E)
-                    {
-                        MessageBox.Show("An error has occured reading the selected file.\r\n\r\n" + E.Message);
-                    }
+                    ActionReadFile(ExcelOpenFileDialog.FileName);
                     ActionUpdate();
                 }
             }
+        }
+        void FileDragEnter(object Sender, DragEventArgs E)
+        {
+            if (E.Data.GetDataPresent(DataFormats.FileDrop)) 
+                E.Effect = DragDropEffects.Copy;
+        }
+        void FileDragDrop(object Sender, DragEventArgs E)
+        {
+            string[] Files = (string[])E.Data.GetData(DataFormats.FileDrop);
+            if (Files.Length > 0)
+                ActionReadFile(Files[0]);
+        }
+        public TFormMashupView() : base()
+        {
+            InitializeComponent();
+            AllowDrop = true;
+            DragDrop += new DragEventHandler(FileDragDrop);
+            DragEnter += new DragEventHandler(FileDragEnter);
+            FormAbout = new TFormAbout();
+            FormSettings = new TFormSettings();
+            QueryParser = new TQueryParser();
         }
         private void ButtonOpen_Click(object Sender, EventArgs E)
         {

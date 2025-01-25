@@ -123,7 +123,7 @@
             this.MaximumSize = new System.Drawing.Size(320, 240);
             this.MinimumSize = new System.Drawing.Size(320, 240);
             this.Name = "TFormAbout";
-            this.Text = "Find";
+            this.Text = "Mashup View about";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TFormSearch_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
